@@ -4,7 +4,6 @@
 # 'docker-compose.override.yml' which is automatically applied on top of this
 # file when the option '-f' of docker-compose is not used
 
-version: '2'
 services:
   odoo:
     build: ./odoo/
