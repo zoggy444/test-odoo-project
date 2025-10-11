@@ -10,3 +10,7 @@
 	path = odoo/external-src/web
 	url = git@github.com:OCA/web.git
 	branch = 16.0
+[submodule "odoo/external-src/sale-workflow"]
+	path = odoo/external-src/sale-workflow
+	url = git@github.com:OCA/sale-workflow.git
+	branch = 16.0

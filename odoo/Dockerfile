@@ -1,5 +1,5 @@
 FROM camptocamp/odoo-project:15.0-latest
-MAINTAINER Camptocamp
+LABEL MAINTAINER="Camptocamp"
 
 # Install additional debian packages if needed
 # RUN set -x; \
@@ -26,7 +26,9 @@ COPY ./migration.yml /odoo/
 
 RUN cd /odoo && find . -maxdepth 1 -name "*requirements.txt" ! -name src_requirements.txt ! -name base_requirements.txt -exec pip install -r {} \;
 
-ENV ADDONS_PATH="/odoo/external-src/server-tools, \
+ENV ADDONS_PATH="\
+  /odoo/external-src/sale-workflow, \
+  /odoo/external-src/server-tools, \
   /odoo/external-src/web, \
   /odoo/src/addons, \
   /odoo/local-src," \
