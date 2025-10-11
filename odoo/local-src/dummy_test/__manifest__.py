@@ -2,7 +2,7 @@
 {'name': 'Dummy Test',
  'description': "Dummy module to check that Travis runs tests. "
                 "To delete once we have real addons",
- 'version': '1.0',
+ 'version': '16.0.1.0.0',
  'author': 'Camptocamp',
  'license': 'AGPL-3',
  'category': 'Others',

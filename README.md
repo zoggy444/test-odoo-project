@@ -61,7 +61,7 @@ environment we share the local (source code) folders with the container using
 Building the image is required when:
 
 * you start to work on the project
-* the base image (`camptocamp/odoo-project:10.0`) has been updated and you need
+* the base image (`camptocamp/odoo-project:16.0`) has been updated and you need
   the new version
 * the local Dockerfile has been modified (for example when dependency or addons
   repository is added)
@@ -254,7 +254,7 @@ the project using git submodules.
 To add a new one, you only have to add the submodule:
 
 ```
-git submodule add -b 10.0 git@github.com:OCA/sale-workflow.git odoo/external-src/sale-workflow
+git submodule add -b 16.0 git@github.com:OCA/sale-workflow.git odoo/external-src/sale-workflow
 git add odoo/external-src/sale-workflow
 ```
 
