@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_writing_entry_tree" model="ir.ui.view">
+        <field name="name">writing.entry.tree</field>
+        <field name="model">writing.entry</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Entries">
+                <field name="name" string="Title"/>
+                <field name="user_id" optional="show" widget="many2one_avatar_user" domain="[('user_id', '=', uid)]"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_writing_entry_form" model="ir.ui.view">
+        <field name="name">writing.entry.form</field>
+        <field name="model">writing.entry</field>
+        <field name="arch" type="xml">
+            <form string="Writing Entry">
+                <group>
+                    <field name="name" placeholder="e.g. Random thoughts"/>
+                    <field name="user_id" invisible="1"/>
+                </group>
+                <notebook>
+                    <page string="Content">
+                        <field name="content" placeholder="Write your entry here..." nolabel="1"/>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_writing_entry_filter" model="ir.ui.view">
+        <field name="name">writing.entry.select</field>
+        <field name="model">writing.entry</field>
+        <field name="arch" type="xml">
+            <search string="Search Writing Entries">
+                <field name="name" filter_domain="[('name', 'ilike', self)"/>
+                <field name="user_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_writing_entry" model="ir.actions.act_window">
+        <field name="name">Writing Entries</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">writing.entry</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('user_id', '=', uid)]</field>
+        <field name="search_view_id" ref="view_writing_entry_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Write an entry to get started!
+            </p><p>
+            Odoo helps you track all activities related to your entries.
+            </p>
+        </field>
+    </record>
+    <record id="action_writing_entry_form_view" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_writing_entry_form"/>
+        <field name="act_window_id" ref="action_writing_entry"/>
+    </record>
+    <record id="action_writing_entry_tree_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_writing_entry_tree"/>
+        <field name="act_window_id" ref="action_writing_entry"/>
+    </record>
+
+    <menuitem id="writing_menu_root"
+        name="Writing"
+        web_icon="sale_management,static/description/icon.svg"
+        sequence="30"
+        action="action_writing_entry"
+        groups="base.group_user"
+    />
+
+</odoo>
