@@ -8,6 +8,8 @@
         <field name="arch" type="xml">
             <tree string="Entries">
                 <field name="name" string="Title"/>
+                <field name="previous_id" optional="show"/>
+                <field name="next_id" optional="show"/>
                 <field name="user_id" optional="show" widget="many2one_avatar_user" domain="[('user_id', '=', uid)]"/>
             </tree>
         </field>
@@ -19,8 +21,14 @@
         <field name="arch" type="xml">
             <form string="Writing Entry">
                 <group>
-                    <field name="name" placeholder="e.g. Random thoughts"/>
-                    <field name="user_id" invisible="1"/>
+                    <group>
+                        <field name="previous_id"/>
+                        <field name="name" placeholder="e.g. Random thoughts"/>
+                    </group>
+                    <group>
+                        <field name="next_id"/>
+                        <field name="user_id" invisible="1"/>
+                    </group>
                 </group>
                 <notebook>
                     <page string="Content">

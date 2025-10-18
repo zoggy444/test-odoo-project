@@ -17,7 +17,8 @@ Module to facilitate writing
         'security/ir.model.access.csv',
     ],
     'depends': [
-        'base'
+        'base',
+        'chained_record',
     ],
     'installable': True,
     'application': True,
